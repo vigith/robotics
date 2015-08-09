@@ -1,3 +1,9 @@
+/* Author : Vigith Maurice
+ * Version: 0.0.1
+ * Purpose: Integrating Shift Registers + LCD 
+            + L293D (motor drivers)
+ */
+
 #include <Wire.h>
 #include <LCD.h>
 #include <LiquidCrystal_SR.h> 
@@ -69,6 +75,7 @@ void setup() {
   // Initialize serial to gain the power to obtain relevant information, 9600 baud
   //  Serial.begin(9600);
 
+  /* Initialize Motor Pins */
   pinMode(MOTOR_RIGHT_SPEED, OUTPUT);
   pinMode(MOTOR_RIGHT_DIR1, OUTPUT);
   pinMode(MOTOR_RIGHT_DIR2, OUTPUT);
@@ -151,8 +158,6 @@ void run_motor() {
   analogWrite(MOTOR_LEFT_SPEED, left_speed); /* speed */
   digitalWrite(MOTOR_LEFT_DIR1, left_fwd);   /* direction */
   digitalWrite(MOTOR_LEFT_DIR2, !left_fwd);  /* inverse the direction (1,0) -> forward; (0,1) -> backward */
-  //    digitalWrite(0, 0);   /* direction */
-  // digitalWrite(1, 1);   /* direction */
 
   analogWrite(MOTOR_RIGHT_SPEED, right_speed); /* speed */
   digitalWrite(MOTOR_RIGHT_DIR1, right_fwd);   /* direction */
@@ -213,7 +218,4 @@ void loop() {
 
   /* run the motor */
   run_motor();                  /* run the motor based on info from button state + gear */
-
-  // delay(1000); // Wait for some arbitrary amount of time
-
 }
