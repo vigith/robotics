@@ -79,7 +79,8 @@ void setup() {
   u8g.setColorIndex(1); // Instructs the display to draw with a pixel on.
 
   /* initiallize the array */
-  for (int i=0; i< SCROLL_LEN; i++) {    
+  for (int i=0; i< SCROLL_LEN; i++) {
+    /* there is no call to free, we can't call! */
     scroll[i] = (char *)malloc(sizeof(char) *SCROLL_WIDTH);
     /* oops, can't find bzero */
     memset(scroll[i], 0, SCROLL_WIDTH);
