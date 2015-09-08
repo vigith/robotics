@@ -34,26 +34,13 @@ void update_scroll_buffer(char *str) {
   return;
 }
 
-void setup() {  
-  u8g.setFont(u8g_font_04b_03r);
-  u8g.setColorIndex(1); // Instructs the display to draw with a pixel on.
-
-  /* initiallize the array */
-  for (int i=0; i< SCROLL_LEN; i++) {    
-    scroll[i] = (char *)malloc(sizeof(char) *SCROLL_WIDTH);
-    /* oops, can't find bzero */
-    memset(scroll[i], 0, SCROLL_WIDTH);
-  }
-
-  return;
-}
-
 /* a small counter that just counts! */
 void counter() {  
   static short int i = 0;
   if (i > 15) {
     return;
   }
+  /* for effect, else it is too fast for eye :-) */
   delay(1000);
   /* convert to ascii */
   itoa (i, int_to_ascii, 10);
@@ -84,6 +71,21 @@ void draw(){
   update_scroll = false;
 
   return;  
+}
+
+
+void setup() {  
+  u8g.setFont(u8g_font_04b_03r);
+  u8g.setColorIndex(1); // Instructs the display to draw with a pixel on.
+
+  /* initiallize the array */
+  for (int i=0; i< SCROLL_LEN; i++) {    
+    scroll[i] = (char *)malloc(sizeof(char) *SCROLL_WIDTH);
+    /* oops, can't find bzero */
+    memset(scroll[i], 0, SCROLL_WIDTH);
+  }
+
+  return;
 }
 
 void loop() {  
