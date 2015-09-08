@@ -1,4 +1,7 @@
 /* Purpose: Basic Scrolling, font is fixed!
+ * Logic:   Maintain a scroll buffer and also overrwrite the
+ *          oldest entry. Redraw the buffer if there is a change
+ *          in scroll buffer.
  * Author:  Vigith Maurice <v@vigith.com>
  */
 
